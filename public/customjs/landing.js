@@ -27,52 +27,75 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Gender Chart
-    const genderCtx = document.getElementById('genderChart').getContext('2d');
-    if(genderCtx && window.genderBarChart)
-    new Chart(genderCtx, {
+    const genderMonthlyCtx = document.getElementById('genderChart')?.getContext('2d');
+
+if (genderMonthlyCtx && window.genderBarChart) {
+    new Chart(genderMonthlyCtx, {
         type: 'bar',
         data: {
-            labels: window/genderBarChart,
-            datasets: [{
-                label: 'Laki-laki',
-                data: window.genderBarChart.laki,
-                backgroundColor: '#3b82f6'
-                },
+            labels: window.genderBarChart.labels,
+            datasets: [
                 {
                     label: 'Laki-laki',
-                data: window.genderBarChart.laki,
-                backgroundColor: '#ec4899',
-                // backgroundColor: [silverColors.primary, silverColors.accent],
-                // borderWidth: 3,
-                // borderColor: '#ffffff',
-                // hoverOffset: 10
-            }]
+                    data: window.genderBarChart.laki,
+                    backgroundColor: '#cbd5e1', // abu silver muda
+                    borderRadius: 8
+                },
+                {
+                    label: 'Perempuan',
+                    data: window.genderBarChart.perempuan,
+                    backgroundColor: '#a78bfa', // ungu pastel
+                    borderRadius: 8
+                }
+            ]
         },
         options: {
             responsive: true,
             plugins: {
                 legend: {
                     position: 'top',
-                    labels:{
-                        color: '#1e293b'
+                    labels: {
+                        color: '#334155' // slate-700, kontras
                     }
+                },
+                tooltip: {
+                    backgroundColor: '#1e293b', // slate gelap
+                    titleColor: '#fff',
+                    bodyColor: '#fff'
+                },
+                datalabels: {
+                    color: '#1e293b',
+                    anchor: 'end',
+                    align: 'start',
+                    font: {
+                        weight: 'bold'
+                    },
+                    formatter: (value) => value
                 }
             },
             scales: {
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        color: '#334155'
+                        color: '#475569'
+                    },
+                    grid: {
+                        color: '#e2e8f0'
                     }
                 },
                 x: {
                     ticks: {
-                        color: '#334155'
+                        color: '#475569'
+                    },
+                    grid: {
+                        display: false
                     }
                 }
             }
-        }
+        },
+        plugins: [ChartDataLabels]
     });
+}
 
     // Monthly Visitors Chart
     const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');

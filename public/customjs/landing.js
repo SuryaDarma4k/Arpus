@@ -98,37 +98,52 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
     // Monthly Visitors Chart
-    const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+    const monthlyCtx = document.getElementById('monthlyChart')?.getContext('2d');
+
+if (monthlyCtx && window.monthlyChart) {
     new Chart(monthlyCtx, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['Januari', 'Februari', 'Maret'],
+            labels: window.monthlyChart.labels,
             datasets: [{
                 label: 'Total Pengunjung',
-                data: [634, 466, 426],
-                borderColor: silverColors.primary,
-                backgroundColor: silverColors.light,
-                fill: true,
-                tension: 0.4,
-                pointBackgroundColor: silverColors.primary,
-                pointBorderColor: '#ffffff',
-                pointBorderWidth: 3,
-                pointRadius: 6
+                data: window.monthlyChart.totals,
+                backgroundColor: '#cbd5e1', // abu silver terang
+                borderRadius: 8,
+                barThickness: 40
             }]
         },
         options: {
-            ...chartConfig,
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#1e293b',
+                    titleColor: '#fff',
+                    bodyColor: '#fff'
+                },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'start',
+                    color: '#1e293b',
+                    font: { weight: 'bold' }
+                }
+            },
             scales: {
                 y: {
-                    display: false,
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: { color: '#475569' },
+                    grid: { color: '#e2e8f0' }
                 },
                 x: {
-                    display: false
+                    ticks: { color: '#475569' },
+                    grid: { display: false }
                 }
             }
-        }
+        },
+        plugins: [ChartDataLabels]
     });
+}
 
     // Job Categories Chart
     const jobCtx = document.getElementById('jobChart')?.getContext('2d');
@@ -343,6 +358,139 @@ if (jobCtx && window.jobChart) {
 //     });
 // }
 
+    // Book Categories Chart
+
+    const liveCtx = document.getElementById('liveChart')?.getContext('2d');
+    
+    if (liveCtx && window.liveChart) {
+    new Chart(liveCtx, {
+        type: 'bar',
+        data: {
+            labels: window.liveChart.labels,
+            datasets: [
+                { label: 'Titik Layanan', data: window.liveChart.titik_layanan, backgroundColor: '#e0e7ff' },
+                { label: ' Anggota Baru', data: window.liveChart.anggota_baru, backgroundColor: '#c4b5fd' },
+                { label: 'Pengunjung', data: window.liveChart.pengunjung, backgroundColor: '#a78bfa' },
+                { label: ' Buku Yang Dibaca', data: window.liveChart.buku_yang_dibaca, backgroundColor: '#7c3aed' },
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#334155' // slate-700, kontras
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#1e293b', // slate gelap
+                    titleColor: '#fff',
+                    bodyColor: '#fff'
+                },
+                datalabels: {
+                    color: '#1e293b',
+                    anchor: 'end',
+                    align: 'start',
+                    font: {
+                        weight: 'bold'
+                    },
+                    formatter: (value) => value
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#475569'
+                    },
+                    grid: {
+                        color: '#e2e8f0'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#475569'
+                    },
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+}
+
+    const memberMonthlyCtx = document.getElementById('memberChart')?.getContext('2d');
+    
+    if (memberMonthlyCtx && window.memberBarChart) {
+    new Chart(memberMonthlyCtx, {
+        type: 'bar',
+        data: {
+            labels: window.memberBarChart.labels,
+            datasets: [
+                {
+                    label: 'Laki-laki',
+                    data: window.memberBarChart.laki,
+                    backgroundColor: '#cbd5e1', // abu silver muda
+                    borderRadius: 8
+                },
+                {
+                    label: 'Perempuan',
+                    data: window.memberBarChart.perempuan,
+                    backgroundColor: '#a78bfa', // ungu pastel
+                    borderRadius: 8
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#334155' // slate-700, kontras
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#1e293b', // slate gelap
+                    titleColor: '#fff',
+                    bodyColor: '#fff'
+                },
+                datalabels: {
+                    color: '#1e293b',
+                    anchor: 'end',
+                    align: 'start',
+                    font: {
+                        weight: 'bold'
+                    },
+                    formatter: (value) => value
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#475569'
+                    },
+                    grid: {
+                        color: '#e2e8f0'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#475569'
+                    },
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+}
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

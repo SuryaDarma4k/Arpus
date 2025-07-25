@@ -29,8 +29,8 @@
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="#dashboard" class="text-slate-300 hover:text-white transition-colors">Dashboard</a>
-                    <a href="#statistics" class="text-slate-300 hover:text-white transition-colors">Statistik</a>
-                    <a href="#reports" class="text-slate-300 hover:text-white transition-colors">Laporan</a>
+                    {{-- <a href="#statistics" class="text-slate-300 hover:text-white transition-colors">Statistik</a> --}}
+                    {{-- <a href="#reports" class="text-slate-300 hover:text-white transition-colors">Laporan</a> --}}
                 </div>
             </div>
         </div>
@@ -69,19 +69,46 @@
         </div>
     </section>
 
+    {{-- <form method="GET" class="mb-6">
+        <label for="triwulan" class="text-slate-700 font-medium mr-2">Pilih Triwulan:</label>
+        <select name="triwulan" id="triwulan" onchange="this.form.submit()"
+                class="border border-slate-300 rounded px-3 py-1">
+            <option value="1" {{ request('triwulan') == 1 ? 'selected' : '' }}>Triwulan 1 (Jan–Mar)</option>
+            <option value="2" {{ request('triwulan') == 2 ? 'selected' : '' }}>Triwulan 2 (Apr–Jun)</option>
+            <option value="3" {{ request('triwulan') == 3 ? 'selected' : '' }}>Triwulan 3 (Jul–Sep)</option>
+            <option value="4" {{ request('triwulan') == 4 ? 'selected' : '' }}>Triwulan 4 (Okt–Des)</option>
+        </select>
+    </form> --}}
+
+
     <!-- Statistics Dashboard -->
     <section id="dashboard" class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h3 class="text-4xl font-bold text-slate-800 mb-4">Dashboard Statistik</h3>
-                <p class="text-xl text-slate-600">Data pengunjung perpustakaan periode Januari - Maret 2025</p>
+                <p class="text-xl text-slate-600">Data pengunjung perpustakaan periode :
+                <form method="GET" class="mb-6">
+                    <select name="triwulan" id="triwulan" onchange="this.form.submit()"
+                        class="border border-slate-300 rounded px-3 py-1">
+                        <option value="1" {{ request('triwulan') == 1 ? 'selected' : '' }}>Triwulan 1 (Jan–Mar)
+                        </option>
+                        <option value="2" {{ request('triwulan') == 2 ? 'selected' : '' }}>Triwulan 2 (Apr–Jun)
+                        </option>
+                        <option value="3" {{ request('triwulan') == 3 ? 'selected' : '' }}>Triwulan 3 (Jul–Sep)
+                        </option>
+                        <option value="4" {{ request('triwulan') == 4 ? 'selected' : '' }}>Triwulan 4 (Okt–Des)
+                        </option>
+                    </select>
+                </form>
+                </p>
             </div>
 
             <!-- Chart Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 <!-- Visitor by Gender -->
                 <div class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
-                    <h4 class="text-lg font-semibold text-slate-800 mb-4">Pengunjung Berdasarkan Jenis Kelamin</h4>
+                    <h4 class="text-lg font-semibold text-slate-800 mb-4">Jumlah Pengunjung Berdasarkan Jenis Kelamin
+                    </h4>
                     <div class="h-48 flex items-center justify-center">
                         <canvas id="genderChart" class="max-w-48 max-h-48"></canvas>
                     </div>
@@ -97,7 +124,7 @@
 
                 <!-- Visitor by Job -->
                 <div class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
-                    <h4 class="text-lg font-semibold text-slate-800 mb-4">Pengunjung Berdasarkan Pekerjaan</h4>
+                    <h4 class="text-lg font-semibold text-slate-800 mb-4">Jumlah Pengunjung Berdasarkan Pekerjaan</h4>
                     <div class="h-48 flex items-center justify-center">
                         <canvas id="jobChart" class="w-full max-h-96"></canvas>
                     </div>
@@ -110,10 +137,27 @@
                         <canvas id="bookChart" class="w-full max-h-96"></canvas>
                     </div>
                 </div>
+
+                {{-- Jumlah Pengunjung Bulanan Status Pengunjung Mobil Pintar --}}
+                <div class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
+                    <h4 class="text-lg font-semibold text-slate-800 mb-4">Jumlah Pengunjung Bulanan Status Pengunjung
+                        Mobil Pintar</h4>
+                    <div class="h-48 flex items-center justify-center">
+                        <canvas id="liveChart" class="w-full max-h-96"></canvas>
+                    </div>
+                </div>
+
+                {{-- Jumlah Pendaftaran Anggota Perpustakaan --}}
+                <div class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
+                    <h4 class="text-lg font-semibold text-slate-800 mb-4">Jumlah Pendaftaran Anggota Perpustakaan</h4>
+                    <div class="h-48 flex items-center justify-center">
+                        <canvas id="memberChart" class="w-full max-h-96"></canvas>
+                    </div>
+                </div>
             </div>
 
             <!-- Service Stats -->
-            <div class="bg-gradient-to-r from-slate-700 to-slate-600 rounded-2xl p-8 text-white">
+            {{-- <div class="bg-gradient-to-r from-slate-700 to-slate-600 rounded-2xl p-8 text-white">
                 <h4 class="text-3xl font-bold mb-8 text-center">Layanan Perpustakaan</h4>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     <div class="text-center">
@@ -134,7 +178,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
 
     <!-- Features Section -->
@@ -266,6 +310,32 @@
             fiksi: @json($bookFiksi),
         };
     </script>
+
+    <script>
+        window.liveChart = {
+            labels: @json($liveLabels),
+            titik_layanan: @json($liveTitikLayanan),
+            anggota_baru: @json($liveAnggotaBaru),
+            pengunjung: @json($livePengunjung),
+            buku_yang_dibaca: @json($liveBukuYangDibaca),
+        };
+    </script>
+
+    <script>
+        window.memberBarChart = {
+            labels: @json($memberLabels),
+            laki: @json($memberLaki),
+            perempuan: @json($memberPerempuan),
+        };
+    </script>
+
+    <script>
+        window.monthlyChart = {
+            labels: @json($monthlyLabels),
+            totals: @json($monthlyTotals),
+        };
+    </script>
+
     <script src="{{ asset('customjs/landing.js') }}"></script>
 
 

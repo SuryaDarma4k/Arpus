@@ -107,7 +107,7 @@
                 <div class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
                     <h4 class="text-lg font-semibold text-slate-800 mb-4">Kategori Buku Terpopuler</h4>
                     <div class="h-48 flex items-center justify-center">
-                        <canvas id="bookChart" class="max-w-48 max-h-48"></canvas>
+                        <canvas id="bookChart" class="w-full max-h-96"></canvas>
                     </div>
                 </div>
             </div>
@@ -239,18 +239,36 @@
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
-    <script src="{{ asset('customjs/landing.js') }}"></script>
+    <script>
+        window.jobChart = {
+            labels: @json($jobLabels),
+            pelajar: @json($jobPelajar),
+            mahasiswa: @json($jobMahasiswa),
+            pns: @json($jobPns),
+            umum: @json($jobUmum),
+            lainnya: @json($jobLainnya),
+        };
+    </script>
 
     <script>
-    window.jobChart = {
-        labels: @json($jobLabels),
-        pelajar: @json($jobPelajar),
-        mahasiswa: @json($jobMahasiswa),
-        pns: @json($jobPns),
-        umum: @json($jobUmum),
-        lainnya: @json($jobLainnya),
-    };
-</script>
+        window.bookChart = {
+            labels: @json($bookLabels),
+            b000: @json($book000),
+            b100: @json($book100),
+            b200: @json($book200),
+            b300: @json($book300),
+            b400: @json($book400),
+            b500: @json($book500),
+            b600: @json($book600),
+            b700: @json($book700),
+            b800: @json($book800),
+            b900: @json($book900),
+            fiksi: @json($bookFiksi),
+        };
+    </script>
+    <script src="{{ asset('customjs/landing.js') }}"></script>
+
+
 </body>
 
 </html>

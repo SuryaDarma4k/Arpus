@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gender Chart
     const genderMonthlyCtx = document.getElementById('genderChart')?.getContext('2d');
-
-if (genderMonthlyCtx && window.genderBarChart) {
+    
+    if (genderMonthlyCtx && window.genderBarChart) {
     new Chart(genderMonthlyCtx, {
         type: 'bar',
         data: {
@@ -222,40 +222,127 @@ if (jobCtx && window.jobChart) {
 }
 
     // Book Categories Chart
-    const bookCtx = document.getElementById('bookChart').getContext('2d');
+
+    const bookCtx = document.getElementById('bookChart')?.getContext('2d');
+    
+    if (bookCtx && window.bookChart) {
     new Chart(bookCtx, {
-        type: 'polarArea',
+        type: 'bar',
         data: {
-            labels: ['Teknologi (600)', 'Sastra (800)', 'Sejarah (900)', 'Agama (200)', 'Filsafat (100)'],
-            datasets: [{
-                data: [20, 186, 19, 41, 16],
-                backgroundColor: [
-                    silverColors.primary + '80',
-                    silverColors.secondary + '80',
-                    silverColors.accent + '80',
-                    silverColors.light + '80',
-                    silverColors.dark + '80'
-                ],
-                borderColor: [
-                    silverColors.primary,
-                    silverColors.secondary,
-                    silverColors.accent,
-                    silverColors.light,
-                    silverColors.dark
-                ],
-                borderWidth: 2
-            }]
+            labels: window.bookChart.labels,
+            datasets: [
+                { label: '000', data: window.bookChart.b000, backgroundColor: '#e0e7ff' },
+                { label: '100', data: window.bookChart.b100, backgroundColor: '#c4b5fd' },
+                { label: '200', data: window.bookChart.b200, backgroundColor: '#a78bfa' },
+                { label: '300', data: window.bookChart.b300, backgroundColor: '#7c3aed' },
+                { label: '400', data: window.bookChart.b400, backgroundColor: '#9333ea' },
+                { label: '500', data: window.bookChart.b500, backgroundColor: '#6366f1' },
+                { label: '600', data: window.bookChart.b600, backgroundColor: '#60a5fa' },
+                { label: '700', data: window.bookChart.b700, backgroundColor: '#38bdf8' },
+                { label: '800', data: window.bookChart.b800, backgroundColor: '#06b6d4' },
+                { label: '900', data: window.bookChart.b900, backgroundColor: '#10b981' },
+                { label: 'Fiksi', data: window.bookChart.fiksi, backgroundColor: '#f59e0b' },
+            ]
         },
         options: {
-            ...chartConfig,
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#334155' // slate-700, kontras
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#1e293b', // slate gelap
+                    titleColor: '#fff',
+                    bodyColor: '#fff'
+                },
+                datalabels: {
+                    color: '#1e293b',
+                    anchor: 'end',
+                    align: 'start',
+                    font: {
+                        weight: 'bold'
+                    },
+                    formatter: (value) => value
+                }
+            },
             scales: {
-                r: {
-                    display: false,
-                    beginAtZero: true
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#475569'
+                    },
+                    grid: {
+                        color: '#e2e8f0'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#475569'
+                    },
+                    grid: {
+                        display: false
+                    }
                 }
             }
-        }
+        },
+        plugins: [ChartDataLabels]
     });
+}
+
+//     const bookCtx = document.getElementById('bookChart')?.getContext('2d');
+
+// if (bookCtx && window.bookChart) {
+//     new Chart(bookCtx, {
+//         type: 'bar',
+//         data: {
+//             labels: window.bookChart.labels,
+//             datasets: [
+//                 { label: '000', data: window.bookChart.b000, backgroundColor: '#e0e7ff' },
+//                 { label: '100', data: window.bookChart.b100, backgroundColor: '#c4b5fd' },
+//                 { label: '200', data: window.bookChart.b200, backgroundColor: '#a78bfa' },
+//                 { label: '300', data: window.bookChart.b300, backgroundColor: '#7c3aed' },
+//                 { label: '400', data: window.bookChart.b400, backgroundColor: '#9333ea' },
+//                 { label: '500', data: window.bookChart.b500, backgroundColor: '#6366f1' },
+//                 { label: '600', data: window.bookChart.b600, backgroundColor: '#60a5fa' },
+//                 { label: '700', data: window.bookChart.b700, backgroundColor: '#38bdf8' },
+//                 { label: '800', data: window.bookChart.b800, backgroundColor: '#06b6d4' },
+//                 { label: '900', data: window.bookChart.b900, backgroundColor: '#10b981' },
+//                 { label: 'Fiksi', data: window.bookChart.fiksi, backgroundColor: '#f59e0b' },
+//             ]
+//         },
+//         options: {
+//             responsive: true,
+//             plugins: {
+//                 legend: {
+//                     position: 'right',
+//                     labels: {
+//                         color: '#334155'
+//                     }
+//                 },
+//                 tooltip: {
+//                     backgroundColor: '#1e293b',
+//                     titleColor: '#fff',
+//                     bodyColor: '#fff'
+//                 }
+//             },
+//             scales: {
+//                 y: {
+//                     beginAtZero: true,
+//                     ticks: { color: '#475569' },
+//                     grid: { color: '#e2e8f0' }
+//                 },
+//                 x: {
+//                     ticks: { color: '#475569' },
+//                     grid: { display: false }
+//                 }
+//             }
+//         }
+//     });
+// }
+
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

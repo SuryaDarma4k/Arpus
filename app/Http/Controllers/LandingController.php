@@ -33,6 +33,10 @@ class LandingController extends Controller
                   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember')")
             ->get(['bulan', 'pelajar', 'mahasiswa', 'pns', 'umum', 'lainnya']);
 
+        $bookMonthly = VisitorByBookType::orderByRaw("
+            FIELD(bulan, 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember')")
+            ->get(['bulan', '000', '100', '200', '300', '400', '500', '600', '700', '800', '900', 'fiksi']);
 
         return view('landing', [
             'totalPengunjung' => $totalPengunjung,
@@ -49,6 +53,19 @@ class LandingController extends Controller
             'jobPns' => $jobMonthly->pluck('pns'),
             'jobUmum' => $jobMonthly->pluck('umum'),
             'jobLainnya' => $jobMonthly->pluck('lainnya'),
+
+            'bookLabels' => $bookMonthly->pluck('bulan'),
+            'book000' => $bookMonthly->pluck('000'),
+            'book100' => $bookMonthly->pluck('100'),
+            'book200' => $bookMonthly->pluck('200'),
+            'book300' => $bookMonthly->pluck('300'),
+            'book400' => $bookMonthly->pluck('400'),
+            'book500' => $bookMonthly->pluck('500'),
+            'book600' => $bookMonthly->pluck('600'),
+            'book700' => $bookMonthly->pluck('700'),
+            'book800' => $bookMonthly->pluck('800'),
+            'book900' => $bookMonthly->pluck('900'),
+            'bookFiksi' => $bookMonthly->pluck('fiksi'),
         ]);
     }
 }

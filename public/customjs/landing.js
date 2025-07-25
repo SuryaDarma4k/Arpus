@@ -131,38 +131,95 @@ if (genderMonthlyCtx && window.genderBarChart) {
     });
 
     // Job Categories Chart
-    const jobCtx = document.getElementById('jobChart').getContext('2d');
+    const jobCtx = document.getElementById('jobChart')?.getContext('2d');
+
+if (jobCtx && window.jobChart) {
     new Chart(jobCtx, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: ['Pelajar', 'Mahasiswa', 'PNS', 'Umum', 'Lainnya'],
-            datasets: [{
-                label: 'Jumlah Pengunjung',
-                data: [251, 688, 121, 303, 163],
-                backgroundColor: [
-                    silverColors.primary,
-                    silverColors.secondary,
-                    silverColors.accent,
-                    silverColors.light,
-                    silverColors.dark
-                ],
-                borderRadius: 8,
-                borderSkipped: false
-            }]
+            labels: window.jobChart.labels,
+            datasets: [
+                {
+                    label: 'Pelajar',
+                    data: window.jobChart.pelajar,
+                    borderColor: '#8b5cf6', // ungu
+                    backgroundColor: '#8b5cf6',
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#8b5cf6'
+                },
+                {
+                    label: 'Mahasiswa',
+                    data: window.jobChart.mahasiswa,
+                    borderColor: '#db2777', // fuchsia tua
+                    backgroundColor: '#db2777',
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#db2777'
+                },
+                {
+                    label: 'PNS',
+                    data: window.jobChart.pns,
+                    borderColor: '#facc15', // kuning pastel
+                    backgroundColor: '#facc15',
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#facc15'
+                },
+                {
+                    label: 'Umum',
+                    data: window.jobChart.umum,
+                    borderColor: '#3b82f6', // biru
+                    backgroundColor: '#3b82f6',
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#3b82f6'
+                },
+                {
+                    label: 'Lainnya',
+                    data: window.jobChart.lainnya,
+                    borderColor: '#14b8a6', // hijau toska
+                    backgroundColor: '#14b8a6',
+                    tension: 0.4,
+                    fill: false,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#14b8a6'
+                }
+            ]
         },
         options: {
-            ...chartConfig,
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#334155'
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#1e293b',
+                    titleColor: '#fff',
+                    bodyColor: '#fff'
+                }
+            },
             scales: {
                 y: {
-                    display: false,
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: { color: '#475569' },
+                    grid: { color: '#e2e8f0' }
                 },
                 x: {
-                    display: false
+                    ticks: { color: '#475569' },
+                    grid: { display: false }
                 }
             }
         }
     });
+}
 
     // Book Categories Chart
     const bookCtx = document.getElementById('bookChart').getContext('2d');

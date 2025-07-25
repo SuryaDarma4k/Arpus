@@ -99,7 +99,7 @@
                 <div class="bg-white rounded-2xl shadow-xl p-6 border border-slate-200">
                     <h4 class="text-lg font-semibold text-slate-800 mb-4">Pengunjung Berdasarkan Pekerjaan</h4>
                     <div class="h-48 flex items-center justify-center">
-                        <canvas id="jobChart" class="w-full max-h-48"></canvas>
+                        <canvas id="jobChart" class="w-full max-h-96"></canvas>
                     </div>
                 </div>
 
@@ -240,6 +240,17 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="{{ asset('customjs/landing.js') }}"></script>
+
+    <script>
+    window.jobChart = {
+        labels: @json($jobLabels),
+        pelajar: @json($jobPelajar),
+        mahasiswa: @json($jobMahasiswa),
+        pns: @json($jobPns),
+        umum: @json($jobUmum),
+        lainnya: @json($jobLainnya),
+    };
+</script>
 </body>
 
 </html>

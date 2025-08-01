@@ -21,6 +21,7 @@ class VisitorByBookTypeResource extends Resource
 {
     protected static ?string $model = VisitorByBookType::class;
 
+    protected static ?string $navigationGroup = 'Pages';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

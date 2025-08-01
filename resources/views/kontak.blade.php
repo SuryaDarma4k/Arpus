@@ -157,7 +157,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="relative z-50 bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0">
+    <nav class="z-50 bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-4 animate-fade-in-left">
@@ -177,7 +177,7 @@
                         class="nav-link text-white/80 hover:text-white font-medium">Beranda</a>
                     {{-- <a href="{{ url('/#dashboard') }}"
                         class="nav-link text-white/80 hover:text-white font-medium">Dashboard</a> --}}
-                    <a href="{{ url('/#services') }}"
+                    <a href="{{ url('') }}"
                         class="nav-link text-white/80 hover:text-white font-medium">Layanan</a>
                     <a href="{{ url('/kontak') }}" class="nav-link text-white hover:text-white font-medium">Kontak</a>
                 </div>

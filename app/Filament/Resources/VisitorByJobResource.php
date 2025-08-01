@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class VisitorByJobResource extends Resource
 {
     protected static ?string $model = VisitorByJob::class;
-
+    protected static ?string $navigationGroup = 'Pages';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

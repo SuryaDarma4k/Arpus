@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class MembershipRegistrationResource extends Resource
 {
     protected static ?string $model = MembershipRegistration::class;
+    protected static ?string $navigationGroup = 'Pages';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

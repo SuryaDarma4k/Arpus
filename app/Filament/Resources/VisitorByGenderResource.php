@@ -22,6 +22,7 @@ class VisitorByGenderResource extends Resource
 {
     protected static ?string $model = VisitorByGender::class;
 
+    protected static ?string $navigationGroup = 'Pages';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -112,6 +113,4 @@ class VisitorByGenderResource extends Resource
             'edit' => Pages\EditVisitorByGender::route('/{record}/edit'),
         ];
     }
-
-    
 }

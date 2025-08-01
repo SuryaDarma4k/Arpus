@@ -140,7 +140,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="relative z-50 bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0">
+    <nav class="z-50 bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-4 animate-fade-in-left">
@@ -157,10 +157,12 @@
                     </div>
                 </div>
                 <div class="hidden md:flex space-x-8 animate-fade-in-right">
-                    <a href="#dashboard" class="nav-link text-white/80 hover:text-white font-medium">Dashboard</a>
-                    <a href="#services" class="nav-link text-white/80 hover:text-white font-medium">Layanan</a>
+                    <a href="/" class="nav-link text-white/80 hover:text-white font-medium">Dashboard</a>
+                    <a href="{{ route('layanan') }}"
+                        class="nav-link text-white/80 hover:text-white font-medium">Layanan</a>
                     {{-- <a href="#features" class="nav-link text-white/80 hover:text-white font-medium">Fitur</a> --}}
-                    <a href="{{ route('kontak') }}" class="nav-link text-white/80 hover:text-white font-medium">Kontak</a>
+                    <a href="{{ route('kontak') }}"
+                        class="nav-link text-white/80 hover:text-white font-medium">Kontak</a>
                 </div>
             </div>
         </div>
@@ -602,9 +604,9 @@
         </section>
 
         <!-- Footer -->
-        <footer id="contact" class="bg-black/20 backdrop-blur-md border-t border-white/10 text-white py-16">
+        <footer class="bg-black/20 backdrop-blur-md border-t border-white/10 text-white py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                     <div class="animate-fade-in-left">
                         <div class="flex items-center space-x-4 mb-6">
                             <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-2xl">
@@ -613,55 +615,74 @@
                                         d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
                                 </svg>
                             </div>
-                            <h3 class="text-3xl font-bold gradient-text">Silver Arpus</h3>
+                            <h3 class="text-2xl font-bold gradient-text">Silver Arpus</h3>
                         </div>
-                        <p class="text-indigo-200 text-lg leading-relaxed">Platform digital revolusioner untuk
-                            manajemen arsip dan perpustakaan yang modern, efisien, dan berkelanjutan.</p>
+                        <p class="text-indigo-200 leading-relaxed">Platform digital revolusioner untuk manajemen arsip
+                            dan
+                            perpustakaan yang modern, efisien, dan berkelanjutan.</p>
                     </div>
 
                     <div class="animate-fade-in-up">
-                        <h4 class="text-2xl font-bold mb-6 text-white">Layanan Unggulan</h4>
-                        <ul class="space-y-3 text-indigo-200 text-lg">
-                            <li class="flex items-center space-x-3">
-                                <div class="w-2 h-2 bg-gradient-to-r from-orange-400 to-red-600 rounded-full"></div>
-                                <span>Laporan Statistik Komprehensif</span>
+                        <h4 class="text-xl font-bold mb-6 text-white">Navigasi</h4>
+                        <ul class="space-y-3 text-indigo-200">
+                            <li><a href="{{ url('/') }}" class="hover:text-white transition-colors">Beranda</a>
+                            </li>
+                            {{-- <li><a href="{{ url('/#dashboard') }}"
+                                class="hover:text-white transition-colors">Dashboard</a></li> --}}
+                            <li><a href="{{ url('/#services') }}"
+                                    class="hover:text-white transition-colors">Layanan</a>
+                            </li>
+                            <li><a href="{{ url('/kontak') }}" class="hover:text-white transition-colors">Kontak</a>
                             </li>
                         </ul>
                     </div>
 
+                    <div class="animate-fade-in-up">
+                        <h4 class="text-xl font-bold mb-6 text-white">Layanan</h4>
+                        <ul class="space-y-3 text-indigo-200">
+                            <li><a href="https://sibooky.semarangkota.go.id/" target="_blank"
+                                    class="hover:text-white transition-colors">Si Booky</a></li>
+                            <li><a href="https://perpustakaan.semarangkota.go.id/" target="_blank"
+                                    class="hover:text-white transition-colors">Portal Perpustakaan</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">OPAC</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Mobil Pintar</a></li>
+                        </ul>
+                    </div>
+
                     <div class="animate-fade-in-right">
-                        <h4 class="text-2xl font-bold mb-6 text-white">Informasi Kontak</h4>
-                        <div class="space-y-4 text-indigo-200 text-lg">
+                        <h4 class="text-xl font-bold mb-6 text-white">Kontak</h4>
+                        <div class="space-y-3 text-indigo-200">
                             <div class="flex items-center space-x-3">
-                                <svg class="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd"
                                         d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
                                         clipRule="evenodd" />
                                 </svg>
-                                <span>Dinas Arsip dan Perpustakaan</span>
+                                <span class="text-sm">Jl. Prof. Sudarto No.116 , Sumurboto , Kec. Banyumanik, Kota
+                                    Semarang, Jawa Tengah 50269</span>
                             </div>
                             <div class="flex items-center space-x-3">
-                                <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd"
-                                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                        clipRule="evenodd" />
+                                <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                                 </svg>
-                                <span>Kota Semarang, Jawa Tengah</span>
+                                <span class="text-sm">WhatsApp : +6281222233860</span>
                             </div>
                             <div class="flex items-center space-x-3">
-                                <svg class="w-6 h-6 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                 </svg>
-                                <span>info@silverarpus.go.id</span>
+                                <span class="text-sm">dinas_arpus@semarangkota.go.id</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="border-t border-white/20 mt-12 pt-8 text-center">
-                    <p class="text-indigo-200 text-lg">© 2025 Silver Arpus. Hak Cipta Dilindungi. Dikembangkan dengan
-                        ❤️ untuk masa depan perpustakaan digital.</p>
+                    <p class="text-indigo-200">© 2025 Silver Arpus. Hak Cipta Dilindungi. Dikembangkan dengan ❤️ untuk
+                        masa
+                        depan perpustakaan digital.</p>
                 </div>
             </div>
         </footer>

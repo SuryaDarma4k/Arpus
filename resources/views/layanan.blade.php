@@ -990,7 +990,7 @@
                 </h3>
                 <p class="text-xl text-indigo-200 mb-12 max-w-3xl mx-auto">
                     Akses ribuan koleksi digital, nikmati cerita interaktif, dan manfaatkan sistem perpustakaan modern
-                    dalam satu platform terintegrasi.
+                    dalam satu platform terintegrasi. Ikuti kami di Berbagai Sosial Media Kami untuk informasi UptoDate
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6 justify-center">
                     <a href="https://sibooky.semarangkota.go.id/" target="_blank"
